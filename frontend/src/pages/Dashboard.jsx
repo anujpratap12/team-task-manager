@@ -99,6 +99,75 @@ function Dashboard() {
 
         </div>
 
+        {/* Recent Tasks Section */}
+        <div className="mt-10 bg-white p-6 rounded-xl shadow">
+
+          <h2 className="text-2xl font-bold mb-4">
+            Recent Tasks
+          </h2>
+
+          {
+            tasks.length === 0 ? (
+
+              <p className="text-gray-600">
+                No tasks available.
+              </p>
+
+            ) : (
+
+              <div className="space-y-4">
+
+                {
+                  tasks.slice(0, 5).map((task) => (
+
+                    <div
+                      key={task._id}
+                      className="border p-4 rounded-lg flex justify-between items-center"
+                    >
+
+                      <div>
+
+                        <h3 className="font-semibold text-lg">
+                          {task.title}
+                        </h3>
+
+                        <p className="text-gray-600">
+                          {task.description}
+                        </p>
+
+                      </div>
+
+                      <span
+                        className={`px-4 py-2 rounded-lg text-white ${
+                          task.status === "Completed"
+                            ? "bg-green-500"
+                            : task.status === "In Progress"
+                            ? "bg-yellow-500"
+                            : "bg-red-500"
+                        }`}
+                      >
+                        {task.status}
+                      </span>
+
+                    </div>
+
+                  ))
+                }
+
+              </div>
+
+            )
+          }
+
+        </div>
+
+        {/* Footer */}
+        <div className="text-center py-6 text-gray-500">
+
+          Team Task Manager © 2026
+
+        </div>
+
       </div>
 
     </div>
